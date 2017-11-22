@@ -111,3 +111,29 @@ let uniqueValues = [...new Set(candies) ];
         return numberOfCandiesHalf;
     }
 };
+
+/*******
+Write a program that outputs the string representation of numbers from 1 to n.
+
+But for multiples of three it should output “Fizz” instead of the number and for the multiples of five output “Buzz”. For numbers which are multiples of both three and five output “FizzBuzz”.
+***/
+let fizzBuzz = (n) => {
+let numberArray = [];
+    //Created new array, tried using on ES6 array methods, but I wasn't manipulating an array, I was creating a whole new one.
+    for(var i = 1; i <=n; i++){
+        let numberUnitThree = Number.isInteger(i / 3);
+        let numberUnitFive = Number.isInteger(i / 5);
+        
+        if(numberUnitThree === true && numberUnitFive === true){
+            numberArray.push("FizzBuzz");
+        }else if(numberUnitThree === true){
+            numberArray.push("Fizz");
+        }else if(numberUnitFive === true){
+            numberArray.push("Buzz");
+        }else{
+            numberArray.push(i.toString());
+        }
+    
+    };
+    return numberArray;
+};
