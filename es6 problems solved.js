@@ -90,3 +90,24 @@ let reverseWords = (s) => {
     return newArray.join(" ");
     
 };
+
+
+/*********
+Given an integer array with even length, where different numbers in this array represent different kinds
+of candies. Each number means one candy of the corresponding kind. You need to distribute these candies 
+equally in number to brother and sister. Return the maximum number of kinds of candies the sister could gain.
+*****/
+
+let distributeCandies = candies => {
+    //using spread and new Object methods
+let uniqueValues = [...new Set(candies) ];
+
+    let numberOfCandies = candies.length;    
+    let numberOfCandiesHalf = numberOfCandies / 2;
+
+    if(uniqueValues.length <= numberOfCandiesHalf){ //[1,1,1,1,2,2,2,3,3,3]// 10 vs 3
+        return uniqueValues.length;
+    }else{ //[1,1,2,3] //3 vs 2
+        return numberOfCandiesHalf;
+    }
+};
