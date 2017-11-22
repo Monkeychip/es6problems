@@ -34,9 +34,11 @@ const findMedianSortedArrays = (nums1, nums2) => {
     }
 };
 
-//flipping binary Input: 1
-//Output: 0
-//Explanation: The binary representation of 1 is 1 (no leading zero bits), and its complement is 0. So you need to output 0.
+/*
+flipping binary Input: 1
+- Output: 0
+- Explanation: The binary representation of 1 is 1 (no leading zero bits), and its complement is 0. So you need to output 0.
+*/
 let findComplement = (num) => {
     let string = num.toString(2);
     let mapObj = {
@@ -45,4 +47,46 @@ let findComplement = (num) => {
     };
     let stringFlipped = string.replace(/0|1/g, (matched) => mapObj[matched]) //010
     return parseInt(stringFlipped,2);  
+};
+
+/**
+Given a List of words, return the words that can be typed using letters of alphabet on only one row's of American keyboard like the image below.
+ * @param {string[]} words
+ * @return {string[]}
+ */
+let findWords = (words) => {
+    let row1 = 'QWERTYUIOPqwertyuiop';
+    let row2 = 'ASDFGHJKLasdfghjkl';
+    let row3 = 'ZXCVBNMzxcvbnm';
+    let arr1 = [];
+    let arr2 = [];
+    let arr3 = [];
+    let finalArray = [];
+    
+    for(let value of words){
+        let smallArray = value.split("");
+        if(smallArray.filter( (letter) => row1.indexOf(letter) > -1 ).join("") == value){ finalArray.push(value)}; 
+        if(smallArray.filter( (letter) => row2.indexOf(letter) > -1 ).join("") === value){finalArray.push(value)};
+        if(smallArray.filter( (letter) => row3.indexOf(letter) > -1 ).join("") === value){finalArray.push(value)};
+    };
+    return finalArray;
+};
+
+/*Given a string, you need to reverse the order of characters in each word within a sentence while still preserving whitespace and initial word order.*/
+
+/**
+ * @param {string} s
+ * @return {string}
+ */
+let reverseWords = (s) => {
+  
+    let arr = s.split(" ");
+    let newArray = [];
+    
+    for (let value of arr) {
+       let test = value.split("").reverse().join("");   
+        newArray.push(test);
+    }
+    return newArray.join(" ");
+    
 };
