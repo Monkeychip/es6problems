@@ -180,6 +180,15 @@ let matrixReshape = (nums, r, c) => {
 };                  
     
     
-    //calculate spots in new matrix
-   // let spotsNewMatrix = r*c;  
+/*
+Used filter method to return the non duplicate in the array - there was always just one non duplicate
+*/
+//ex[2,2,1,1,3] return 3
+let singleNumber = (nums) => {
+    let duplicate = nums.filter((number,index,array) => array.indexOf(number) !== index); //filter callback excepts element, index, array
+    let result = nums.filter((num) => {
+        return duplicate.indexOf(num) === -1; 
+    });
+    return result[0];
+};
     
