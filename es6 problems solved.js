@@ -137,3 +137,49 @@ let numberArray = [];
     };
     return numberArray;
 };
+
+
+/********
+In MATLAB, there is a very useful function called 'reshape', which can reshape a matrix into a new one with different size but keep its original data.
+
+You're given a matrix represented by a two-dimensional array, and two positive integers r and c representing the row number and column number of the wanted reshaped matrix, respectively.
+
+The reshaped matrix need to be filled with all the elements of the original matrix in the same row-traversing order as they were.
+
+If the 'reshape' operation with given parameters is possible and legal, output the new reshaped matrix; Otherwise, output the original matrix.
+***/
+
+
+let matrixReshape = (nums, r, c) => {
+               
+    let numbOfColumnsOldMatrix = nums.reduce((sum, number) => number.length, 0) //2 columns
+    let spotsOldMatrix = numbOfColumnsOldMatrix * nums.length; //nums.length is number of rows
+    let spotsNewMatrix = r*c;
+    let stringArray = [];
+    let findingNumbers = nums.forEach((column)=>{ //[1,2,3,4]
+       column.forEach((value) => stringArray.push(value)) 
+    });      
+        
+    if(spotsNewMatrix === spotsOldMatrix){
+        let newMatrix = [];
+        for(var i=0; i < r; i++){ 
+            newMatrix.push([]);
+            //now in each column, loop through and add the rows
+            for(var e=0; e < c; e++){ 
+                newMatrix[i].push(stringArray[e]); 
+            };
+            //return array missing the ones already inserted into the first row
+            stringArray.splice(0,c);
+        };
+        return newMatrix;
+        
+    }else{
+       return nums;//return original matrix
+    }
+
+};                  
+    
+    
+    //calculate spots in new matrix
+   // let spotsNewMatrix = r*c;  
+    
